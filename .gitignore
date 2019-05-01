@@ -1,0 +1,7 @@
+
+.ipynb_checkpoints/
+.idea/
+Test Dir/
+__pycache__/
+*.log
+*.jks
