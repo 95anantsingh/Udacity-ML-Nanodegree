@@ -5,6 +5,8 @@ from matplotlib.colors import ListedColormap
 from sklearn.model_selection import learning_curve
 
 
+# works for only ndarray and not if x is a Dataframe
+
 def plot_decision_boundary(X, y, model, name):
     x_min, x_max = X[:, 0].min() - 1, X[:, 0].max() + 1
     y_min, y_max = X[:, 1].min() - 1, X[:, 1].max() + 1
@@ -62,4 +64,24 @@ def draw_learning_curves(X, y, estimator, num_trainings, name):
              label="Cross-validation score")
 
     plt.legend(loc="best")
+    plt.show()
+
+
+def plot_decision_boundaries(X, y, var, db, name):
+    # Plot Boundary
+    for x in db:
+        plot_x = np.array([min(X[:, 0]), max(X[:, 0])])
+        plot_y = (-1 / var[x][1]) * (var[x][0] * plot_x + var[x][2])
+        plt.plot(plot_x, plot_y, label="DB " + str(x))
+
+    # Plot Points
+    for i, j in enumerate(np.unique(y)):
+        plt.scatter(X[y == j, 0], X[y == j, 1],
+                    c=ListedColormap(('red', 'blue'))(i), label=j)
+
+    # plt.step(np.arange(0, X[:, 0].max() + 0.5, 1), np.arange(0, X[:, 0].max() + 0.5, 1))
+    plt.title(name)
+    plt.xlabel('X')
+    plt.ylabel('Y')
+    plt.legend()
     plt.show()

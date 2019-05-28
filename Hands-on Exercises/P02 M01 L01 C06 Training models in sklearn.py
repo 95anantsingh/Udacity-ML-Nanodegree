@@ -40,7 +40,7 @@ v.plot_decision_boundary(X, y, classifier, 'Support Vector Machine')
 # Neural Network
 
 from keras.models import Sequential
-from keras.layers.core import Dense, Dropout, Activation
+from keras.layers.core import Dense, Dropout
 from keras.utils import to_categorical
 
 # Building the model
