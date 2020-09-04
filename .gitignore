@@ -105,10 +105,10 @@ ENV/
 # Pycharm vscode
 
 .ipynb_checkpoints/
-.idea/
-Test Dir/
+#.idea/
+#Test Dir/
 __pycache__/
 *.DS_Store
 *.log
 *.jks
-.vscode/
+#.vscode/
