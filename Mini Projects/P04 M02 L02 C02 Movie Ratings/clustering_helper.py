@@ -111,8 +111,8 @@ def draw_movie_clusters(clustered, max_users, max_movies):
         
         d = sort_by_rating_density(d, max_movies, max_users)
         
-        d = d.reindex_axis(d.mean().sort_values(ascending=False).index, axis=1)
-        d = d.reindex_axis(d.count(axis=1).sort_values(ascending=False).index)
+        d = d.reindex(d.mean().sort_values(ascending=False).index, axis=1)
+        d = d.reindex(d.count(axis=1).sort_values(ascending=False).index)
         d = d.iloc[:max_users, :max_movies]
         n_users_in_plot = d.shape[0]
         
@@ -148,7 +148,7 @@ def draw_movie_clusters(clustered, max_users, max_movies):
             cbar.ax.set_yticklabels(['5 stars', '4 stars','3 stars','2 stars','1 stars','0 stars'])
 
             plt.setp(ax.get_xticklabels(), rotation=90, fontsize=9)
-            plt.tick_params(axis='both', which='both', bottom='off', top='off', left='off', labelbottom='off', labelleft='off') 
+#             plt.tick_params(axis='both', which='both', bottom='off', top='off', left='off', labelbottom='off', labelleft='off') 
             #print('cluster # {} \n(Showing at most {} users and {} movies)'.format(cluster_id, max_users, max_movies))
 
             plt.show()
@@ -157,9 +157,9 @@ def draw_movie_clusters(clustered, max_users, max_movies):
             # Let's only show 5 clusters
             # Remove the next three lines if you want to see all the clusters
             # Contribution welcomed: Pythonic way of achieving this
-            # c = c+1
-            # if c > 6:
-            #    break
+#             c = c+1
+#             if c > 6:
+#                 break
                 
 def get_most_rated_movies(user_movie_ratings, max_number_of_movies):
     # 1- Count
